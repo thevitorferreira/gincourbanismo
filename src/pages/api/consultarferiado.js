@@ -11,12 +11,12 @@ export default async function retornaFeriado(req, res) {
             where: { data: data }
         });
         if (holiday.length === 0) {
-            res.status(404).json({ error: "Data não encontrada" });
+            res.status(202).json({ error: "Essa data não é um feriado" });
         } else {
-            res.json(holiday);
+            res.status(200).json(holiday);
         }
     } catch (err) {
-        res.status(400).json({ error: err.message });
+        res.status(201).json({ error: err.message });
     }
 }
 
