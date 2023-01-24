@@ -40,8 +40,9 @@ e cadastrar feriados nacionais.
 Você deve desenvolver as seguintes funcionalidades:
 
 1. Inserir todos os feriados presentes no JSON no DB. (Note que o JSON contém os campos: data, nome, tipo, descricao, uf e municipio. Você NÂO DEVE inserir os campos uf e municipio. Insira na tabela apenas os campos: data, nome, tipo e descricao). Você encontrará o JSON `feriados_nacionais_2023.json` na raiz do repositório.
-
+   Solução: Criado endpoint carregaferiadosjson, que pode ser acessado pela url /api/carregaferiadosjson que está encarregado de preencher o banco de dados      com os dados de feriados presente no arquivo json
 2. Uma rota que ao ser requisitada, devolva como resposta todos os dados inseridos na tabela e o http status 200.
+   Solução: Criado o endpoint retornaferiados, que pode ser acessado pela url /api/retornaferiados, este endpoint retorna todos os dados inseridos no banco
 
 3. Uma rota para consultar feriados, com os seguintes requisitos:
 
@@ -56,12 +57,16 @@ Você deve desenvolver as seguintes funcionalidades:
    3.3) Quando receber uma data válida, porém não encontrar uma data correspondente na tabela, deve retornar status 202 e o texto: "Essa data não é um feriado".
 
    3.4) Quando receber uma data inválida, ex: 32-14-2023, deve retornar status: 201 e o texto: "Data invalida, use o formato {link-api}?date=YYYY-MM-DD"
+   
+   Solução: Criado o endpoint consultarferiados, que poder acessado pela url /api/consultarferiados?date=yyyy-mm-dd, faz as tratativas de erro e retorna.
 
 4. Uma rota que vai receber um input do formulário acessível na página principal do repositório.
 
    4.1) Esse formulário está configurado para fazer a requisição para o arquivo "criaferiado.js", localizado no diretório /src/pages/api. Crie sua função dentro desse arquivo.
 
    4.1) A função criada deve inserir o feriado na tabela usando os mesmos campos citados acima. E deve retornar status 201, caso tenha inserido com sucesso na tabela e status 500 caso tenha ocorrido algum erro na inserção. O frontend está configurado para tratar esses status.
+
+   Solução: Criada a função que salva os dados que recebe do formulário no banco de dados
 
 Exemplo - O comportamento ao buscar o feriado do dia 1 de janeiro de 2023, para tópico 3, deve ser, como segue:
 
