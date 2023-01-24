@@ -5,7 +5,6 @@ export default async function handler(req, res) {
    const { data, nome, tipo, descricao } = req.body;
    var date = toDate(data)
    try {
-      console.log(`dados: ${data}, ${nome}, ${tipo}, ${descricao}`)
       const newHoliday = await prisma.feriados846.create({
          data: {
             data: date,
